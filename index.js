@@ -88,16 +88,54 @@ var finances = [
 ];
 
 //1.Calculation for total months
+
 var totalMonths = finances.length;
 //console.log(totalMonths);
 
 //2.Calculation for net amount of profit or loss over the entire period. i.e. how much in total was gained or lost.Looking at the figures, I think this just means the total.
+//Filter?
 
-//Starting with 0 add and subtract the second value in each array until there are no more left.
-//For(i = 0; i < finances.length; i++)
+//**Inital thoughts: Starting from 0 we want to go through every array, one by one, and add or subtract the second elements. We need the code to recognise that "-" means subtract.
 
-//3.Calculation for average chnages in profit or loss over the total period. i.e. calculate all the individual profits and losses and then work out the average.
+//** -1 accesses the last array or 1 may also work
+// We need to use a for loop.
 
-//4.Calculation for the greatest increase in profits or losses. i.e. What was the single biggest win.
+//**This is how to call the second value in the first array */
+//var total = finances[0][1];
+//console.log(total);
 
-//5.Calculation for the greatest increase in profits or losses. i.e. What was the single biggest loss.
+//flatten it?
+
+//Starting with [0] add and subtract the [1] value in each array until there are no more left.
+//var total = finances;
+//for (i = 0; i < finances.length; i + 2);
+//console.log(total);
+
+var flatFinances = finances.flat();
+//console.log(flatFinances);
+
+var total = 0;
+
+for (var i = 1; i < flatFinances.length; i = i + 2) {
+  total += flatFinances[i];
+}
+//console.log(total);
+
+//console.log(finances[0][1]);
+
+//3.Calculation for average changes in profit or loss over the total period. i.e. calculate all the individual profits and losses and then work out the average.
+//filter?
+
+//4.Calculation for the greatest increase. i.e. What was the single biggest win.
+//Use math.max https://www.w3schools.com/js/js_array_sort.asp
+
+//5.Calculation for the greatest decrease. i.e. What was the single biggest loss.
+//use math.min
+
+console.log("Financial Analysis");
+console.log("------------------");
+console.log("Total Months: " + totalMonths);
+console.log("Total: $" + total);
+//console.log("Average Change: " + avgChange);
+//console.log("Greatest Increase in Profits/Losses:" + increase);
+//console.log("Greatest Decrease in Profits/Losses:" + decrease);
