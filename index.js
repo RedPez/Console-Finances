@@ -110,6 +110,7 @@ var totalMonths = finances.length;
 //var total = finances;
 //for (i = 0; i < finances.length; i + 2);
 //console.log(total);
+//Nope. Not quite.
 
 var flatFinances = finances.flat();
 //console.log(flatFinances);
@@ -121,21 +122,50 @@ for (var i = 1; i < flatFinances.length; i = i + 2) {
 }
 //console.log(total);
 
-//console.log(finances[0][1]);
-
 //3.Calculation for average changes in profit or loss over the total period. i.e. calculate all the individual profits and losses and then work out the average.
-//filter?
+//filter? flatten? can you do it with a for loop?
+
+//Work out the difference between a and b, b and c, c and d etc. then divide by the number of comparisons (total/#months-1).
+
+var integerDifference = [];
+
+for (var i = 1; i < finances.length; i++) {
+  var change = finances[i][1] - finances[i - 1][1];
+
+  integerDifference.push(change);
+}
+//console.log(integerDifference);
+
+//Now we need to sum all of the changes and divide by the number of differences. Now, how do we do that?!
+
+//Find sum of differences
+for (
+  var i = 0, integerSum = 0;
+  i < integerDifference.length;
+  integerSum += integerDifference[i++]
+);
+//console.log(integerSum);
+
+//Find average of differences
+var avgChange = integerSum / (totalMonths - 1);
+//console.log(avgChange);
 
 //4.Calculation for the greatest increase. i.e. What was the single biggest win.
-//Use math.max https://www.w3schools.com/js/js_array_sort.asp
+//Use math.max? https://www.w3schools.com/js/js_math.asp
+
+var increase = Math.max(...integerDifference);
 
 //5.Calculation for the greatest decrease. i.e. What was the single biggest loss.
 //use math.min
+
+var decrease = Math.min(...integerDifference);
+
+//Analysis
 
 console.log("Financial Analysis");
 console.log("------------------");
 console.log("Total Months: " + totalMonths);
 console.log("Total: $" + total);
-//console.log("Average Change: " + avgChange);
-//console.log("Greatest Increase in Profits/Losses:" + increase);
-//console.log("Greatest Decrease in Profits/Losses:" + decrease);
+console.log("Average Change: " + avgChange);
+console.log("Greatest Increase in Profits/Losses: " + "($" + increase + ")");
+console.log("Greatest Decrease in Profits/Losses:" + "($" + decrease + ")");
