@@ -14,7 +14,7 @@ The challenge this week, was to used our newly aquired JavaScript skills to anal
 
 - The greatest decrease in Profit/Losses (date and amount) over the entire period.
 
-Here is a link to the deployed website: (https://redpez.github.io/frontend-portfolio)
+Here is a link to the deployed website: (https://redpez.github.io/Console-Finances)
 
 ## Table of Contents (Optional)
 
