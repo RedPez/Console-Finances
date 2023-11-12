@@ -153,12 +153,39 @@ var avgChange = integerSum / (totalMonths - 1);
 //4.Calculation for the greatest increase. i.e. What was the single biggest win.
 //Use math.max? https://www.w3schools.com/js/js_math.asp
 
-var increase = Math.max(...integerDifference);
+//var increase = Math.max(...integerDifference); does not inc. month:
+
+var increase = 0;
+var increaseMonth = "";
+
+for (var i = 1; i < finances.length; i++) {
+  var change = finances[i][1] - finances[i - 1][1];
+
+  if (change > increase) {
+    increase = change;
+    increaseMonth = finances[i][0];
+  }
+}
+
+//console.log("Greatest Increase:", increase);
+//console.log("Month with the Greatest Increase:", increaseMonth);
 
 //5.Calculation for the greatest decrease. i.e. What was the single biggest loss.
 //use math.min
 
-var decrease = Math.min(...integerDifference);
+//var decrease = Math.min(...integerDifference); Again, didn't include month.
+
+var decrease = 0;
+var decreaseMonth = "";
+
+for (var i = 1; i < finances.length; i++) {
+  var change = finances[i][1] - finances[i - 1][1];
+
+  if (change < decrease) {
+    decrease = change;
+    decreaseMonth = finances[i][0];
+  }
+}
 
 //Analysis
 
@@ -166,6 +193,18 @@ console.log("Financial Analysis");
 console.log("------------------");
 console.log("Total Months: " + totalMonths);
 console.log("Total: $" + total);
-console.log("Average Change: " + avgChange);
-console.log("Greatest Increase in Profits/Losses: " + "($" + increase + ")");
-console.log("Greatest Decrease in Profits/Losses:" + "($" + decrease + ")");
+console.log("Average Change: " + avgChange.toFixed(2));
+console.log(
+  "Greatest Increase in Profits/Losses: " +
+    increaseMonth +
+    " ($" +
+    increase +
+    ")"
+);
+console.log(
+  "Greatest Decrease in Profits/Losses: " +
+    decreaseMonth +
+    " ($" +
+    decrease +
+    ")"
+);
